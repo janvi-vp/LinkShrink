@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { QRCodeSVG } from 'qrcode.react';
 import { Check, Clipboard, Link as LinkIcon, Loader2, PartyPopper } from 'lucide-react';
 
 const formSchema = z.object({
@@ -163,6 +164,10 @@ export function UrlShortener() {
                   <Clipboard className="h-5 w-5" />
                 )}
               </Button>
+            </div>
+            <div className="flex flex-col items-center mt-4">
+              <QRCodeSVG value={shortUrl} size={128} />
+              <span className="mt-2 text-xs text-muted-foreground">Scan QR to visit</span>
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
               Your tiny URL is ready to be shared! It will expire in 30 days.
