@@ -172,6 +172,7 @@ export function UrlShortener() {
               <div style={{ paddingTop: 24 }} />
               <QRCodeSVG value={shortUrl} size={128} />
               <span className="mt-2 text-xs text-muted-foreground">Scan QR to visit</span>
+              <div style={{ paddingBottom: 24 }} />
             </div>
             <div className="flex justify-center">
               <Button className="mt-3" variant="outline" onClick={async () => {
