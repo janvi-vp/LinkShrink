@@ -169,23 +169,23 @@ export function UrlShortener() {
               </Button>
             </div>
             <div className="flex flex-col items-center mt-4" id="qr-download-area">
+              <div style={{ paddingTop: 24 }} />
               <QRCodeSVG value={shortUrl} size={128} />
               <span className="mt-2 text-xs text-muted-foreground">Scan QR to visit</span>
               <div className="mt-2 text-center text-xs text-muted-foreground">
                 <div>Original: {originalUrl}</div>
-                <div>Short: {shortUrl}</div>
               </div>
-              <Button className="mt-3" variant="outline" onClick={async () => {
-                const qrArea = document.getElementById('qr-download-area');
-                if (!qrArea) return;
-                const canvas = await html2canvas(qrArea);
-                const link = document.createElement('a');
-                link.download = 'qr-code.png';
-                link.href = canvas.toDataURL();
-                link.click();
-              }}>
-                Download QR as Image
-              </Button>
+            <Button className="mt-3" variant="outline" onClick={async () => {
+              const qrArea = document.getElementById('qr-download-area');
+              if (!qrArea) return;
+              const canvas = await html2canvas(qrArea);
+              const link = document.createElement('a');
+              link.download = 'qr-code.png';
+              link.href = canvas.toDataURL();
+              link.click();
+            }}>
+              Download QR as Image
+            </Button>
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
               Your tiny URL is ready to be shared! It will expire in 30 days.
