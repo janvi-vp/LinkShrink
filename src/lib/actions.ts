@@ -35,6 +35,10 @@ export async function createShortUrl(
   longUrl: string
 ): Promise<{ shortCode?: string; error?: string }> {
   try {
+    if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+      return { error: 'Firebase project is not configured. Cannot create short URL.' };
+    }
+
     const validation = urlSchema.safeParse(longUrl);
     if (!validation.success) {
       return { error: 'Please provide a valid URL.' };
