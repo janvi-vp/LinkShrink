@@ -146,26 +146,28 @@ export function UrlShortener() {
         </Form>
         {shortUrl && (
           <div className="mt-6 rounded-lg bg-primary/10 p-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 overflow-hidden">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-2 overflow-x-auto max-w-full py-2 px-1 bg-white rounded">
                 <PartyPopper className="h-5 w-5 flex-shrink-0 text-accent" />
-                <p className="truncate text-lg font-semibold text-primary">
-                  <a
-                    href={shortUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {shortUrl.replace(/^https?:\/\//, '')}
-                  </a>
-                </p>
+                <a
+                  href={shortUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primary whitespace-nowrap"
+                  style={{ fontSize: '1.1rem' }}
+                >
+                  {shortUrl.replace(/^https?:\/\//, '')}
+                </a>
               </div>
-              <Button onClick={handleCopy} variant="ghost" size="icon" aria-label="Copy short URL">
-                {isCopied ? (
-                  <Check className="h-5 w-5 text-green-500" />
-                ) : (
-                  <Clipboard className="h-5 w-5" />
-                )}
+              <Button
+                onClick={handleCopy}
+                variant="secondary"
+                size="lg"
+                aria-label="Copy short URL"
+                className="flex items-center gap-2 mt-2 sm:mt-0 text-base px-4 py-2 font-bold border border-primary bg-primary text-white hover:bg-primary/90"
+              >
+                {isCopied ? <Check className="h-5 w-5 text-green-500" /> : <Clipboard className="h-5 w-5" />}
+                <span>{isCopied ? 'Copied!' : 'Copy Link'}</span>
               </Button>
             </div>
             <div className="flex flex-col items-center mt-4" id="qr-download-area">
