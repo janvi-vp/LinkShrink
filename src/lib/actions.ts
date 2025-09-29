@@ -64,7 +64,13 @@ export async function createShortUrl(
       return newCount;
     });
 
-    const shortCode = toBase62(newCount);
+    let shortCode = toBase62(newCount);
+    // Ensure the short code is always 6 characters (pad with leading zeros if needed)
+    if (shortCode.length < 6) {
+      shortCode = shortCode.padStart(6, '0');
+    } else if (shortCode.length > 6) {
+      shortCode = shortCode.slice(0, 6); // Truncate if longer (shouldn't happen for reasonable counter values)
+    }
 
     const thirtyDaysFromNow = new Date();
     thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
