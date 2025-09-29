@@ -175,6 +175,7 @@ export function UrlShortener() {
               <div className="mt-2 text-center text-xs text-muted-foreground">
                 <div>Original: {originalUrl}</div>
               </div>
+            </div>
             <Button className="mt-3" variant="outline" onClick={async () => {
               const qrArea = document.getElementById('qr-download-area');
               if (!qrArea) return;
@@ -186,7 +187,6 @@ export function UrlShortener() {
             }}>
               Download QR as Image
             </Button>
-            </div>
             <p className="mt-1 text-sm text-muted-foreground">
               Your tiny URL is ready to be shared! It will expire in 30 days.
             </p>
